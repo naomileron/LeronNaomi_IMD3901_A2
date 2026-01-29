@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3095302153353882448}
   - component: {fileID: 7317810753305367854}
+  - component: {fileID: 7437157127503608631}
   m_Layer: 0
   m_Name: butterfly_prefab
   m_TagString: Untagged
@@ -51,7 +52,20 @@ MonoBehaviour:
   changeTargetDistance: 0.5
   minHeight: 2
   maxHeight: 5
-  startPos: {fileID: 389966187805961384}
+--- !u!114 &7437157127503608631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 389966187805961384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c459739e09f5a7541a2beb659e5f2964, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::butterflyDespawn
+  minLifeSpan: 45
+  maxLifeSpan: 120
 --- !u!1001 &8671604287409639325
 PrefabInstance:
   m_ObjectHideFlags: 0

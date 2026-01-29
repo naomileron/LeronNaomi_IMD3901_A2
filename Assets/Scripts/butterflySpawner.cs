@@ -63,4 +63,10 @@ public class butterflySpawner : MonoBehaviour
             SpawnButterfly();
         }
     }
+
+    public void butterflyDespawn()
+    {
+        currentButterflyCount--;
+        Debug.Log("Butterfly gone, Count: " + currentButterflyCount);
+    }
 }

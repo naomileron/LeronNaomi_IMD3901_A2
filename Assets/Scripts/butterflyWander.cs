@@ -14,24 +14,23 @@ public class butterflyWander : MonoBehaviour
 
     private Vector3 targetPosition;
 
-    public GameObject startPos; 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        //if (startPos != null)
-        //{
-        //    transform.position = startPos.transform.position;
-        //}
-        
+        //butterflies are assigned a random start position at when play is pressed
         targetPosition = transform.position;
         PickNewTarget();
+
+        moveSpeed *= Random.Range(0.8f, 1.2f); //butterflies move at varying speeds
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 direction = targetPosition - transform.position;
+        Vector3 direction = targetPosition - transform.position; //fly towards target
+
+        transform.position += Vector3.up * Mathf.Sin(Time.time * 2f) * 0.001f; //up and down movement
 
         //if the butterfly gets within this distance of its target, it will pick a new target to fly towards
         if (direction.magnitude < changeTargetDistance)
@@ -59,4 +58,6 @@ public class butterflyWander : MonoBehaviour
 
         targetPosition = new Vector3(transform.position.x + randomXZ.x, targetY, transform.position.z + randomXZ.y);
     }
+
+
 }

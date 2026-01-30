@@ -18,6 +18,9 @@ public class PlayerController : MonoBehaviour
     private Vector3 cameraStartPos;
     bool walking;
 
+    //footsteps
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

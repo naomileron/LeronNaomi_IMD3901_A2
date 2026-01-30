@@ -11,6 +11,13 @@ public class PlayerController : MonoBehaviour
 
     float xRotation = 0f;
 
+    //Head bob variables
+    public float bobFrequency = 8.0f;
+    public float bobStrength = 0.08f;
+    private float bobTimer = 0.0f;
+    private Vector3 cameraStartPos;
+    bool walking;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -19,6 +26,7 @@ public class PlayerController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
+        cameraStartPos = cameraTransform.localPosition;
     }
 
     // Update is called once per frame
@@ -47,5 +55,19 @@ public class PlayerController : MonoBehaviour
         transform.Rotate(Vector3.up * mouseX);
 
 
+        walking = moveInput.magnitude > 0.1f;
+
+        if (walking)
+        {
+            bobTimer += Time.deltaTime * bobFrequency;
+            float bobOffset = Mathf.Sin(bobTimer) * bobStrength;
+
+            cameraTransform.localPosition = cameraStartPos + Vector3.up * bobOffset;
+        }
+        else
+        {
+            bobTimer = 0.0f;
+            cameraTransform.localPosition = Vector3.Lerp(cameraTransform.localPosition, cameraStartPos, Time.deltaTime * 5.0f);
+        }
     }
 }

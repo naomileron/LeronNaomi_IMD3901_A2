@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     bool walking;
 
     //footsteps
-
+    public AudioSource footsteps;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -30,12 +30,14 @@ public class PlayerController : MonoBehaviour
         Cursor.visible = false;
 
         cameraStartPos = cameraTransform.localPosition;
+
+        footsteps.volume = 0.0f;
+        footsteps.Play();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log("Scene is updating!");
 
         Vector2 moveInput = Keyboard.current != null ? new Vector2
             (
@@ -66,11 +68,17 @@ public class PlayerController : MonoBehaviour
             float bobOffset = Mathf.Sin(bobTimer) * bobStrength;
 
             cameraTransform.localPosition = cameraStartPos + Vector3.up * bobOffset;
+
         }
         else
         {
             bobTimer = 0.0f;
             cameraTransform.localPosition = Vector3.Lerp(cameraTransform.localPosition, cameraStartPos, Time.deltaTime * 5.0f);
+
         }
+
+        //fades in footstep sfx when the player is moving
+        float targetVolume = walking ? 0.6f : 0.0f;
+        footsteps.volume = Mathf.Lerp(footsteps.volume, targetVolume, Time.deltaTime * 8.0f);
     }
 }

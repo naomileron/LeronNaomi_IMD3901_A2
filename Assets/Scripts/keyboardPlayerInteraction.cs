@@ -13,6 +13,7 @@ public class keyboardPlayerInteraction : MonoBehaviour
 
     public AudioSource capture;
     public AudioSource release;
+    public AudioSource changeCol;
 
     public Animator handAnimator;
 
@@ -30,6 +31,17 @@ public class keyboardPlayerInteraction : MonoBehaviour
             uiBehaviourScript.SetInteract(false);
 
             handAnimator.SetBool("CanCatch", false);
+
+            if(Keyboard.current.qKey.wasPressedThisFrame)
+            {
+                butterflyColourChange colourChange = heldButterfly.GetComponent<butterflyColourChange>();
+
+                if (colourChange != null)
+                {
+                    colourChange.CycleColour();
+                    changeCol.Play();
+                }
+            }
 
             if(Keyboard.current.eKey.wasPressedThisFrame)
             {

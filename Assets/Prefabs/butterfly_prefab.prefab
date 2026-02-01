@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7317810753305367854}
   - component: {fileID: 7437157127503608631}
   - component: {fileID: 680250081085997803}
+  - component: {fileID: -3843414386920383995}
   m_Layer: 0
   m_Name: butterfly_prefab
   m_TagString: Interactable
@@ -88,6 +89,24 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.22552884
   m_Center: {x: -0.5707092, y: 1.4053627, z: -0.24006319}
+--- !u!114 &-3843414386920383995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 389966187805961384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1315b6039a89e6143b8767a10e07883c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::butterflyColourChange
+  colours:
+  - {fileID: 2100000, guid: 813a1c87f5bf14d4ca6e703fc1a8bb9c, type: 2}
+  - {fileID: 2100000, guid: 04fe411439be56a4691fcc9756c5ac0f, type: 2}
+  - {fileID: 2100000, guid: 9d0a3e71bb3c8044a888f0fc9b043b3b, type: 2}
+  - {fileID: 2100000, guid: 953b9b0e4f0bd194eb62c8a6104a194a, type: 2}
+  - {fileID: 2100000, guid: 2f872fe9dd7fe86489bfa4d426d9e83c, type: 2}
 --- !u!1001 &8671604287409639325
 PrefabInstance:
   m_ObjectHideFlags: 0

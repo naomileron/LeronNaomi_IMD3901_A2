@@ -8,14 +8,15 @@ public class uiBehaviour : MonoBehaviour
     public Color defaultColour = Color.white;
     public Color interactColour = Color.green;
 
-    public TextMeshPro catchText;
-    public TextMeshPro colourChangeText;
-    public TextMeshPro releaseText;
+    public TMP_Text catchText;
+    public TMP_Text colourChangeText;
+    public TMP_Text releaseText;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        HideAll();
     }
 
     // Update is called once per frame
@@ -28,4 +29,26 @@ public class uiBehaviour : MonoBehaviour
     {
       crosshair.color = canInteract ? interactColour : defaultColour;
     }
+
+    public void HideAll()
+    {
+        catchText.gameObject.SetActive(false);
+        colourChangeText.gameObject.SetActive(false);
+        releaseText.gameObject.SetActive(false);
+    }
+
+    public void ShowCatchPrompt()
+    {
+        catchText.gameObject.SetActive(true);
+        colourChangeText.gameObject.SetActive(false);
+        releaseText.gameObject.SetActive(false);
+    }
+
+    public void ShowHoldingPrompts()
+    {
+        catchText.gameObject.SetActive(false);
+        colourChangeText.gameObject.SetActive(true);
+        releaseText.gameObject.SetActive(true);
+    }
+
 }

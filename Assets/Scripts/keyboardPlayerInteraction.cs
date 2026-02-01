@@ -29,6 +29,7 @@ public class keyboardPlayerInteraction : MonoBehaviour
         if (heldButterfly != null)
         {
             uiBehaviourScript.SetInteract(false);
+            uiBehaviourScript.ShowHoldingPrompts();
 
             handAnimator.SetBool("CanCatch", false);
 
@@ -49,6 +50,7 @@ public class keyboardPlayerInteraction : MonoBehaviour
                 heldButterfly.Release();
                 heldButterfly = null;
                 release.Play();
+                uiBehaviourScript.HideAll();
             }
 
             return;
@@ -71,7 +73,16 @@ public class keyboardPlayerInteraction : MonoBehaviour
       
         uiBehaviourScript.SetInteract(canInteract);
 
-        handAnimator.SetBool("CanCatch", canInteract);
+        if(canInteract)
+        {
+            uiBehaviourScript.ShowCatchPrompt();
+        }
+        else
+        {
+            uiBehaviourScript.HideAll();
+        }
+
+            handAnimator.SetBool("CanCatch", canInteract);
 
         if (currentButterfly != null && Keyboard.current.eKey.wasPressedThisFrame)
         {
@@ -80,6 +91,8 @@ public class keyboardPlayerInteraction : MonoBehaviour
             heldButterfly = currentButterfly;
             currentButterfly.Catch(handTransform);
             capture.Play();
+
+            uiBehaviourScript.HideAll();
         }
 
     }

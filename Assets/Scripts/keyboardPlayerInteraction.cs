@@ -23,6 +23,13 @@ public class keyboardPlayerInteraction : MonoBehaviour
         if (heldButterfly != null)
         {
             uiBehaviourScript.SetInteract(false);
+
+            if(Keyboard.current.eKey.wasPressedThisFrame)
+            {
+                heldButterfly.Release();
+                heldButterfly = null;
+            }
+
             return;
         }
 

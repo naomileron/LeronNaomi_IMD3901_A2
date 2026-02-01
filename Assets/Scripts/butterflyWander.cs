@@ -85,4 +85,19 @@ public class butterflyWander : MonoBehaviour
         transform.SetParent(hand);
     }
 
+    public void Release()
+    {
+        isCaught = false;
+
+        transform.SetParent(null);
+
+        Collider collider = GetComponent<Collider>();
+        if (collider)
+        {
+            collider.enabled = true;
+        }
+
+        PickNewTarget();
+    }
+
 }

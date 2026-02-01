@@ -14,6 +14,8 @@ public class butterflyWander : MonoBehaviour
 
     private Vector3 targetPosition;
 
+    bool isCaught;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -23,11 +25,18 @@ public class butterflyWander : MonoBehaviour
         PickNewTarget();
 
         moveSpeed *= Random.Range(0.8f, 1.2f); //butterflies move at varying speeds
+
+        isCaught = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (isCaught)
+        {
+            return;
+        }
+
         Vector3 direction = targetPosition - transform.position; //fly towards target
 
         transform.position += Vector3.up * Mathf.Sin(Time.time * 2f) * 0.001f; //up and down movement
@@ -59,5 +68,20 @@ public class butterflyWander : MonoBehaviour
         targetPosition = new Vector3(transform.position.x + randomXZ.x, targetY, transform.position.z + randomXZ.y);
     }
 
+    public void Catch(Transform hand)
+    {
+        isCaught = true;
+
+        Collider collider = GetComponent<Collider>();
+        if (collider)
+        {
+            collider.enabled = false;
+        }
+
+        transform.position = hand.position;
+        transform.rotation = hand.rotation;
+
+        transform.SetParent(hand);
+    }
 
 }

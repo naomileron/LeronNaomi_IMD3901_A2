@@ -7,6 +7,9 @@ public class keyboardPlayerInteraction : MonoBehaviour
     public Camera playerCamera;
     public uiBehaviour uiBehaviourScript;
 
+    public Transform handTransform;
+    private butterflyWander currentButtefly;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -16,8 +19,8 @@ public class keyboardPlayerInteraction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
-        //RaycastHit hit;
+        currentButtefly = null;
+        bool canInteract = false;
 
         float sphereRadius = 0.2f;
 
@@ -25,23 +28,20 @@ public class keyboardPlayerInteraction : MonoBehaviour
         {
             if(hit.collider.CompareTag("Interactable"))
             {
-                uiBehaviourScript.SetInteract(true);
-
-                return;
+                //uiBehaviourScript.SetInteract(true);
+                currentButtefly = hit.collider.GetComponent<butterflyWander>();
+                canInteract = currentButtefly != null;
             }
         }
+      
+        uiBehaviourScript.SetInteract(canInteract);
 
-        uiBehaviourScript.SetInteract(false);
+        if (currentButtefly != null && Keyboard.current.eKey.wasPressedThisFrame)
+        {
+            currentButtefly.Catch(handTransform);
+        }
 
-    //    Debug.DrawRay(
-    //        playerCamera.transform.position,
-    //        playerCamera.transform.forward * interactRange,
-    //        Color.green
-    //        );
-    //    Debug.DrawLine(
-    //playerCamera.transform.position,
-    //playerCamera.transform.position + playerCamera.transform.forward * interactRange,
-    //Color.green
-//);
     }
+
+           
 }

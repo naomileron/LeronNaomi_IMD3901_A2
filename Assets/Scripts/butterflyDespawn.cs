@@ -30,12 +30,19 @@ public class butterflyDespawn : MonoBehaviour
 
     private void Destroy()
     {
-       if (spawner != null)
-        {
-            spawner.butterflyDespawn();
+        butterflyWander wander = GetComponent<butterflyWander>();
 
-            Destroy(gameObject);
+        if (wander != null && wander.IsCaught)
+        {
+            return;
         }
+
+        if (spawner != null)
+        {
+            spawner.butterflyDespawn();     
+        }
+
+        Destroy(gameObject);
     }
 
     // Update is called once per frame

@@ -11,6 +11,9 @@ public class keyboardPlayerInteraction : MonoBehaviour
     private butterflyWander currentButterfly;
     private butterflyWander heldButterfly;
 
+    public AudioSource capture;
+    public AudioSource release;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -28,6 +31,7 @@ public class keyboardPlayerInteraction : MonoBehaviour
             {
                 heldButterfly.Release();
                 heldButterfly = null;
+                release.Play();
             }
 
             return;
@@ -54,6 +58,7 @@ public class keyboardPlayerInteraction : MonoBehaviour
         {
             heldButterfly = currentButterfly;
             currentButterfly.Catch(handTransform);
+            capture.Play();
         }
 
     }

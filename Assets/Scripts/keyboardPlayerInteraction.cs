@@ -8,7 +8,8 @@ public class keyboardPlayerInteraction : MonoBehaviour
     public uiBehaviour uiBehaviourScript;
 
     public Transform handTransform;
-    private butterflyWander currentButtefly;
+    private butterflyWander currentButterfly;
+    private butterflyWander heldButterfly;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -19,7 +20,13 @@ public class keyboardPlayerInteraction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentButtefly = null;
+        if (heldButterfly != null)
+        {
+            uiBehaviourScript.SetInteract(false);
+            return;
+        }
+
+        currentButterfly = null;
         bool canInteract = false;
 
         float sphereRadius = 0.2f;
@@ -29,16 +36,17 @@ public class keyboardPlayerInteraction : MonoBehaviour
             if(hit.collider.CompareTag("Interactable"))
             {
                 //uiBehaviourScript.SetInteract(true);
-                currentButtefly = hit.collider.GetComponent<butterflyWander>();
-                canInteract = currentButtefly != null;
+                currentButterfly = hit.collider.GetComponent<butterflyWander>();
+                canInteract = currentButterfly != null;
             }
         }
       
         uiBehaviourScript.SetInteract(canInteract);
 
-        if (currentButtefly != null && Keyboard.current.eKey.wasPressedThisFrame)
+        if (currentButterfly != null && Keyboard.current.eKey.wasPressedThisFrame)
         {
-            currentButtefly.Catch(handTransform);
+            heldButterfly = currentButterfly;
+            currentButterfly.Catch(handTransform);
         }
 
     }

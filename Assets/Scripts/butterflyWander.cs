@@ -16,6 +16,7 @@ public class butterflyWander : MonoBehaviour
 
     bool isCaught;
 
+    public bool IsCaught => isCaught;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

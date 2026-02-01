@@ -14,10 +14,12 @@ public class keyboardPlayerInteraction : MonoBehaviour
     public AudioSource capture;
     public AudioSource release;
 
+    public Animator handAnimator;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        //handAnimator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -27,8 +29,11 @@ public class keyboardPlayerInteraction : MonoBehaviour
         {
             uiBehaviourScript.SetInteract(false);
 
+            handAnimator.SetBool("CanCatch", false);
+
             if(Keyboard.current.eKey.wasPressedThisFrame)
             {
+                handAnimator.SetTrigger("Release");
                 heldButterfly.Release();
                 heldButterfly = null;
                 release.Play();
@@ -54,8 +59,12 @@ public class keyboardPlayerInteraction : MonoBehaviour
       
         uiBehaviourScript.SetInteract(canInteract);
 
+        handAnimator.SetBool("CanCatch", canInteract);
+
         if (currentButterfly != null && Keyboard.current.eKey.wasPressedThisFrame)
         {
+            handAnimator.SetTrigger("Grab");
+
             heldButterfly = currentButterfly;
             currentButterfly.Catch(handTransform);
             capture.Play();

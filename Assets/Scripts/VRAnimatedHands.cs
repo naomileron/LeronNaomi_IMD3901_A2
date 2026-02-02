@@ -14,7 +14,7 @@ public class VRAnimatedHands : MonoBehaviour
         float grab = grabValue.action.ReadValue<float>();
         float release = releaseValue.action.ReadValue<float>();
 
-        handAnimator.SetTrigger("Grab");
-        handAnimator.SetTrigger("Release");
+        handAnimator.SetFloat("Grab", grab);
+        handAnimator.SetFloat("Release", release);
     }
 }

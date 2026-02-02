@@ -1,0 +1,20 @@
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+public class VRAnimatedHands : MonoBehaviour
+{
+    public InputActionProperty grabValue;
+    public InputActionProperty releaseValue;
+
+    public Animator handAnimator;
+
+    // Update is called once per frame
+    void Update()
+    {
+        float grab = grabValue.action.ReadValue<float>();
+        float release = releaseValue.action.ReadValue<float>();
+
+        handAnimator.SetTrigger("Grab");
+        handAnimator.SetTrigger("Release");
+    }
+}

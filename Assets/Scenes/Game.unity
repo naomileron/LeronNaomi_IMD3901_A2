@@ -1079,7 +1079,8 @@ PrefabInstance:
       value: VRrightHand
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3893101577267441278, guid: fcefb12b6a73ae04c9696d227c1d3adf, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fcefb12b6a73ae04c9696d227c1d3adf, type: 3}
@@ -1156,7 +1157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   speed: 5
-  mouseSensitivity: 2
+  mouseSensitivity: 50
   controller: {fileID: 738013564}
   cameraTransform: {fileID: 219076294}
   bobFrequency: 8
@@ -3848,7 +3849,8 @@ PrefabInstance:
       value: VRleftHand
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: -8173880414266158867, guid: 06f6d9f30050a7042b0c3e35052f73b0, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 06f6d9f30050a7042b0c3e35052f73b0, type: 3}

@@ -1,26 +1,47 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class butterflyColourChange : MonoBehaviour
 {
-    [SerializeField] private Material[] colours;
+    public Material[] colours;
+    public InputActionReference changeColourAction;
+    public Renderer[] renders;
 
-    private Renderer[] renders;
+    int colourIndex = -1;
 
-    private int colourIndex = -1;
-
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Awake()
+    public void Awake()
     {
         renders = GetComponentsInChildren<Renderer>();
     }
 
-    public void CycleColour()
+    public void OnEnable()
     {
-        if(colours == null || colours.Length == 0)
+        if (changeColourAction == null)
         {
+            Debug.LogError("Change Colour Action is NOT assigned!", this);
             return;
         }
+
+        changeColourAction.action.performed += OnChangeColour;
+        changeColourAction.action.Enable();
+    }
+
+    public void OnDisable()
+    {
+        if (changeColourAction == null) return;
+
+        changeColourAction.action.performed -= OnChangeColour;
+        changeColourAction.action.Disable();
+    }
+
+    public void OnChangeColour(InputAction.CallbackContext context)
+    {
+        CycleColour();
+    }
+
+    public void CycleColour()
+    {
+        if (colours == null || colours.Length == 0) return;
 
         colourIndex = (colourIndex + 1) % colours.Length;
 
@@ -28,10 +49,5 @@ public class butterflyColourChange : MonoBehaviour
         {
             r.material = colours[colourIndex];
         }
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

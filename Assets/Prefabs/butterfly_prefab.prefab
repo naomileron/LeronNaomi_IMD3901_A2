@@ -109,6 +109,8 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 9d0a3e71bb3c8044a888f0fc9b043b3b, type: 2}
   - {fileID: 2100000, guid: 953b9b0e4f0bd194eb62c8a6104a194a, type: 2}
   - {fileID: 2100000, guid: 2f872fe9dd7fe86489bfa4d426d9e83c, type: 2}
+  changeColourAction: {fileID: 0}
+  renders: []
 --- !u!54 &457413132622327275
 Rigidbody:
   m_ObjectHideFlags: 0

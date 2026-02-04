@@ -1,42 +1,25 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class butterflyColourChange : MonoBehaviour
 {
     public Material[] colours;
-    public InputActionReference changeColourAction;
     public Renderer[] renders;
 
     int colourIndex = -1;
 
-    public void Awake()
+    void Awake()
     {
         renders = GetComponentsInChildren<Renderer>();
     }
 
-    public void OnEnable()
+    void OnEnable()
     {
-        if (changeColourAction == null)
-        {
-            Debug.LogError("Change Colour Action is NOT assigned!", this);
-            return;
-        }
-
-        changeColourAction.action.performed += OnChangeColour;
-        changeColourAction.action.Enable();
+        ButterflyInputManager.OnChangeColour += CycleColour;
     }
 
-    public void OnDisable()
+    void OnDisable()
     {
-        if (changeColourAction == null) return;
-
-        changeColourAction.action.performed -= OnChangeColour;
-        changeColourAction.action.Disable();
-    }
-
-    public void OnChangeColour(InputAction.CallbackContext context)
-    {
-        CycleColour();
+        ButterflyInputManager.OnChangeColour -= CycleColour;
     }
 
     public void CycleColour()

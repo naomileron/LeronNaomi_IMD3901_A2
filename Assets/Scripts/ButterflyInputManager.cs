@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 
 public class ButterflyInputManager : MonoBehaviour
 {
+    //Handles colour change action with VR controls (set up in the input action asset in unity)
     public static System.Action OnChangeColour;
 
     public InputActionReference changeColourAction;

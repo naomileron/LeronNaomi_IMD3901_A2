@@ -24,13 +24,12 @@ public class PlayerController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        //Debug.Log("Scene has started!");
-
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
         cameraStartPos = cameraTransform.localPosition;
 
+        //footsteps are always playing but are muted when at the start, when the player is not walking
         footsteps.volume = 0.0f;
         footsteps.Play();
     }
@@ -38,7 +37,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        //-----------IN CLASS CODE--------------------------//
         Vector2 moveInput = Keyboard.current != null ? new Vector2
             (
                 (Keyboard.current.aKey.isPressed ? -1 : 0) + (Keyboard.current.dKey.isPressed ? 1 : 0),
@@ -61,9 +60,12 @@ public class PlayerController : MonoBehaviour
 
 
         walking = moveInput.magnitude > 0.1f;
+        //-----------IN CLASS CODE--------------------------//
 
+        //head bob logic (used chatgpt to figure this out). Only runs when the player is walking
         if (walking)
         {
+            
             bobTimer += Time.deltaTime * bobFrequency;
             float bobOffset = Mathf.Sin(bobTimer) * bobStrength;
 
@@ -77,7 +79,7 @@ public class PlayerController : MonoBehaviour
 
         }
 
-        //fades in footstep sfx when the player is moving
+        //fades in footstep sfx when the player is moving (used chatgpt to figure out the volume math)
         float targetVolume = walking ? 0.6f : 0.0f;
         footsteps.volume = Mathf.Lerp(footsteps.volume, targetVolume, Time.deltaTime * 8.0f);
     }

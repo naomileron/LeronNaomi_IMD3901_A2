@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.XR;
 
+//sfx logic based on XR input
 public class XRButtonSFX : MonoBehaviour
 {
     public AudioSource grab;

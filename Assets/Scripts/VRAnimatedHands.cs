@@ -11,6 +11,7 @@ public class VRAnimatedHands : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //animation logic based on animation tree in unity
         float grab = grabValue.action.ReadValue<float>();
         float release = releaseValue.action.ReadValue<float>();
 

@@ -7,6 +7,8 @@ public class playModeManager : MonoBehaviour
 
     void Awake()
     {
+        //gets input from the player prefs and sets the players as active or disabled based on that
+
         int mode = PlayerPrefs.GetInt("PlayerMode", -1);
 
         if (mode == -1)

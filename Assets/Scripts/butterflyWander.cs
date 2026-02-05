@@ -27,12 +27,13 @@ public class butterflyWander : MonoBehaviour
 
         moveSpeed *= Random.Range(0.8f, 1.2f); //butterflies move at varying speeds
 
-        isCaught = false;
+        isCaught = false; //butterfly knows it is not being held when the game starts
     }
 
     // Update is called once per frame
     void Update()
     {
+        //if being held, do nothing
         if (isCaught)
         {
             return;
@@ -69,6 +70,7 @@ public class butterflyWander : MonoBehaviour
         targetPosition = new Vector3(transform.position.x + randomXZ.x, targetY, transform.position.z + randomXZ.y);
     }
 
+    //moves and parents the butterfly to the hand position when the player presses 'e' (that logic is in the keyboard player interaction script, and this function is called there)
     public void Catch(Transform hand)
     {
         isCaught = true;
@@ -85,6 +87,7 @@ public class butterflyWander : MonoBehaviour
         transform.SetParent(hand);
     }
 
+    //The butterfly is no longer parented to the hand and resumes moving to a new randomly assigned position
     public void Release()
     {
         isCaught = false;

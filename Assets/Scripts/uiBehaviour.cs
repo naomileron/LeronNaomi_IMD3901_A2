@@ -19,17 +19,13 @@ public class uiBehaviour : MonoBehaviour
         HideAll();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    //changes colour if the the hand is in range of a butterfly
     public void SetInteract(bool canInteract)
     {
       crosshair.color = canInteract ? interactColour : defaultColour;
     }
 
+    //hide all instructions
     public void HideAll()
     {
         catchText.gameObject.SetActive(false);
@@ -37,6 +33,7 @@ public class uiBehaviour : MonoBehaviour
         releaseText.gameObject.SetActive(false);
     }
 
+    //show prompt to catch butterfly when crosshair is green, hide others 
     public void ShowCatchPrompt()
     {
         catchText.gameObject.SetActive(true);
@@ -44,6 +41,7 @@ public class uiBehaviour : MonoBehaviour
         releaseText.gameObject.SetActive(false);
     }
 
+    //show intructions on what to do while the player is holding a butterfly, hide the prompt text
     public void ShowHoldingPrompts()
     {
         catchText.gameObject.SetActive(false);

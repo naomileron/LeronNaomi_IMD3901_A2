@@ -1382,7 +1382,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 80
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -2984,6 +2984,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::playModeManager
   keyboardPlayer: {fileID: 738013562}
   VRPlayer: {fileID: 464001457}
+  mode: 0
 --- !u!4 &1442941880
 Transform:
   m_ObjectHideFlags: 0
@@ -3120,13 +3121,13 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 88ff7106c2647444dbaeb34612c3fd08, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.655
+  m_Volume: 0.526
   m_Pitch: 1
   Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 172
+  Priority: 184
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500

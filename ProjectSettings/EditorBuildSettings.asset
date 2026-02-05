@@ -12,6 +12,12 @@ EditorBuildSettings:
     path: Assets/Scenes/DeviceSelection.unity
     guid: e23a19f265557d04ea9968c8d201caad
   - enabled: 1
+    path: Assets/Scenes/playOrInstruct.unity
+    guid: 57f36e12e8b0e474689ebae5fdfc9388
+  - enabled: 1
+    path: Assets/Scenes/Instructions.unity
+    guid: b5dee174daffe034c823f01f051cb4f4
+  - enabled: 1
     path: Assets/Scenes/Game.unity
     guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects:

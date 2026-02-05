@@ -16,5 +16,7 @@ public class VRAnimatedHands : MonoBehaviour
 
         handAnimator.SetFloat("Grab", grab);
         handAnimator.SetFloat("Release", release);
+
+
     }
 }

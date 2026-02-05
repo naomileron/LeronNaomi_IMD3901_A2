@@ -2,15 +2,13 @@ using UnityEngine;
 
 public class VRSoundEffects : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public AudioSource audioSource;
 
-    // Update is called once per frame
-    void Update()
+    public void play()
     {
-        
+        if (audioSource != null)
+        {
+            audioSource.Play();
+        }
     }
 }

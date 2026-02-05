@@ -1,14 +1,48 @@
 using UnityEngine;
+using UnityEngine.XR;
 
-public class VRSoundEffects : MonoBehaviour
+public class XRButtonSFX : MonoBehaviour
 {
-    public AudioSource audioSource;
+    public AudioSource grab;
+    public AudioSource splash;
 
-    public void play()
+    private InputDevice rightHand;
+    private bool primarywasPressedLastFrame = false;
+    private bool gripWasPressedLastFrame = false;
+
+    void Start()
     {
-        if (audioSource != null)
+        rightHand = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
+    }
+
+    void Update()
+    {
+        if (!rightHand.isValid)
         {
-            audioSource.Play();
+            rightHand = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
+            return;
+        }
+
+        if (rightHand.TryGetFeatureValue(CommonUsages.primaryButton, out bool primaryPressed))
+        {
+            // Button DOWN (edge detection)
+            if (primaryPressed && !primarywasPressedLastFrame)
+            {
+                grab.Play();
+            }
+
+            primarywasPressedLastFrame = primaryPressed;
+        }
+
+        if (rightHand.TryGetFeatureValue(CommonUsages.gripButton, out bool gripPressed))
+        {
+            if (gripPressed && !gripWasPressedLastFrame)
+            {
+                if (splash != null)
+                    splash.Play();
+            }
+
+            gripWasPressedLastFrame = gripPressed;
         }
     }
 }
